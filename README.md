@@ -1,25 +1,24 @@
 # bug_bounty_notes
+*Note this is a work in progress - I'll be looking to make constant additions to this. I am also a beginner in Bug Hunting myself but this is a brief collection of notes - in the hope it could also help you too. Feel free to make any requests of change or added insight - I can be contacted from the discord server in my Bio. Thank you*
+
 
 # What is a Bug Bounty?:
-
 A bug bounty program is a deal offered by many websites, organizations and software developers by which individuals can receive recognition and compensation for reporting bugs, especially those pertaining to security exploits and vulnerabilities.
 
-### These are some useful tools & tips:
 
-YouTube Channels
+### These are some useful YT channels:
 LiveOverflow
 Bugcrowd
 Nahamsec
 STÖK
 SecurityIdiots
 
+
 # Recommended Skills:
-
 - Linux basics, Networking basics, programming 
-
 - Basic idea about the HTTP protocols and its headers(Request and Response)
-
 - Burpsuite , Metasploit , SqlMap , Nmap , etc.
+
 
 ## Choosing a Target:
 Bug Bounty Platforms
@@ -46,23 +45,23 @@ https://www.antihack.me/
 
 Or you can find targets from Google by searching for *responsible disclosure policy* of a website. I recommend to start with responsible disclosure , so there are more chances for acceptance of report. And then after an experience, start with Bug Bounty Platform.
 
+
 ## Have a Target, Now what?
-
 If you have chosen your target, then you should start finding the subdomain of the target.
-
 or we can start with the IP blocks of the targets which we can get from the ASN (some of the websites are mentioned in below)
 
-## Why do we need subdomain?
 
-Sometimes targeting the main domain is not possible to find bugs which will cause frustration to the beginners. Because the top or other researchers are already found and reported the bugs to the target. For newbie should start with the other subdomains. (its true that most common vulnerabilities are already reported by the researcher so keep in mind that we have to find a unique target and unique bug.)
+## Why do we need subdomain?
+Sometimes targeting the main domain is not possible to find bugs which will cause frustration to the beginners. Because the top or other researchers are already found and reported the bugs to the target. Therefore beginners should start with the other subdomains.
+
 
 ## How to find Sub-domains?
 Small list of tools (many more available)
-    Subfinder
-    Amass
-    Sublist3r
-    Aquatone
-    Knockpy
+-    Subfinder
+-    Amass
+-    Sublist3r
+-    Aquatone
+-    Knockpy
 
 You can also find sub-domain via online recon tools
 Virustotal ( Use its API in tools)
@@ -71,43 +70,33 @@ Findsubdomains
 Pentest-tools
 Hackertarget
 
+
 ## Sub-Domain Takeover Vulnerability:
-
 Go to this link to learn about some basics to advance concepts of Subdomain takeover vulnerability.
-
-https://github.com/EdOverflow/can-i-take-over-xyz
+-	https://github.com/EdOverflow/can-i-take-over-xyz
 
 Discovering Target Using ASN (IP Blocks):
-
-https://whois.arin.net/ui/query.do
+-	https://whois.arin.net/ui/query.do
 
 Discovering Target Using Shodan:
-
-https://www.shodan.io/search?query=org%3...+Motors%22
+-	https://www.shodan.io/search?query=org%3...+Motors%22
 
 Brand / TLD Discovery:
-
 This will increase the target scope by searching for a Acquisition of a target
-
 Acquisition — -> crunchbase, wikipedia
-
 link discovery — ->burp spidering
-
 weighted& reverse tracker → domlink, builtwith
-
    
     Trademark In Google: ” “Tesla © 2018” “Tesla © 2019” “Tesla © 2020” inurl:tesla
     Subfinder
     Gobuster
     Aquatone
 
-Subdomain Enumeration:
-
+# Subdomain Enumeration:
 Here you can find the original scripts https://github.com/appsecco/bugcrowd-lev...numeration
+*Note: Replace the API key used inside the scripts which may be an invalid which results in less amount of subdomains (I recommend to use virustotal API key)*
 
-Note: Kindly replace the API key used inside the scripts which may be an invalid which results in less amount of subdomains (I recommend to use virustotal API key)
-
-Presentation:
+### Presentation:
 Subdomain Enumeration with the SPF record
 Using CSP
 DNSrecon
@@ -116,51 +105,39 @@ Zone transfer using dig
 DNSSEC
 Zone walking NSEC — LDNS
 
-[Image: icon_.hackergif.gif]
-
-Port Scanning:
-
+# Port Scanning:
 The port scanning is very important to find the target which is running in non-standard or standard ports.
-
 For port scanning I have used NMAP and Masscan and Aquatone scan.
-
 Then the researcher will start checking for sub-domain takeover vulnerability once they found sub-domains which running on the standard or non-standard ports.
-    Enumerating Targets(Port Scanning)
-    NMAP
-    Visual Identification
+-    Enumerating Targets(Port Scanning)
+-    NMAP
+-    Visual Identification
 
 This part will help us find an application that is running on standard or non-standard ports on the target machine.
-
 The following tools are grabbing banner if they found on the target machine which is running on specific ports. That will help us to sort list our target sub-domains.
-    Eyewitness
-    Wayback Enumeration →> waybackurl
+-    Eyewitness
+-    Wayback Enumeration →> waybackurl
 
 This technology will help us if we seen any one of the HTTP responses like 401,403,404. This will show you the old stored data using Archive.
-
 Here we can find some sensitive information even when the target page is not currently accessible.
+-	https://archieve.org/web
 
-https://archieve.org/web
-
-Parsing JavaScript:
-
+## Parsing JavaScript:
 Parsing JS is very useful to find the directories which is used by the target. we can use these type of tools instead of brute-forcing the directory list on the target
-
-Note: Brute-Forcing of directory also good thing to do. Always use the multiple techniques to find the directory from the targets(I found Hotsar Aws Credentials with Directory Buster & Burp Intruder)
-    linkfinder
-    DIRsearch
-    Dirb
-    Content Discovery: “ Gobuster”
-    Credential Bruteforce: “BrutesprayBrutespray”
+*Note: Brute-Forcing of directory also good thing to do. Always use the multiple techniques to find the directory from the targets(I found Hotsar Aws Credentials with Directory Buster & Burp Intruder)*
+-    linkfinder
+-    DIRsearch
+-    Dirb
+-    Content Discovery: “ Gobuster”
+-    Credential Bruteforce: “BrutesprayBrutespray”
 
 These tools have the ability to brute-force the different type of protocols like http, ssh,smtp, etc
 
-Technology Identification and Vulnerability findings:
-
-Here I used Wappalyzer available add-ons on for many browsers. Whatweb tool also I used to find the what technologies they used on the target.
-
+## Technology Identification and Vulnerability findings:
+Here I use Wappalyzer available add-ons on for many browsers. Whatweb tool also I used to find the what technologies they used on the target.
 The following tools to find technologies and technology based vulnerabilities on the target.
-WPScan
-Cmsmap
+-    WPScan
+-    Cmsmap
 
 # Extensions for Web-App Hunting
 - FoxyProxy
