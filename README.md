@@ -504,3 +504,6 @@ And the change account email with victims email.
 
 - Also the use of email spoofing to render CRLF injection attacks, moving from out of scope to in scope
 
+
+## Credits
+Source on HF for first half - https://hackforums.net/showthread.php?tid=6215479
